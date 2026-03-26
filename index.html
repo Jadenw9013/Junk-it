@@ -731,19 +731,16 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 4.5rem;
       font-weight: 800;
-      background: linear-gradient(180deg, rgba(201,165,78,0.35) 0%, rgba(201,165,78,0.1) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: rgba(201,165,78,0.7);
       line-height: 1;
       margin-bottom: 1rem;
       transition: all 0.3s;
+      text-shadow: 0 0 20px rgba(201,165,78,0.15);
     }
 
     .step:hover .step-num {
-      background: linear-gradient(180deg, rgba(201,165,78,0.6) 0%, rgba(201,165,78,0.25) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
+      color: var(--gold);
+      text-shadow: 0 0 30px rgba(201,165,78,0.3);
     }
 
     .step-bar {
@@ -999,6 +996,7 @@
       line-height: 1.6;
     }
 
+    /* ── WIZARD CARD ── */
     .form-card {
       background: rgba(17, 26, 39, 0.7);
       border: 1px solid var(--glass-border);
@@ -1009,17 +1007,265 @@
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     }
 
+    /* ── Progress Bar ── */
+    .wizard-progress {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .wizard-progress::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(240,236,228,0.08);
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .wizard-progress::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: translateY(-50%);
+      z-index: 1;
+      transition: width 0.4s ease;
+      width: var(--progress, 0%);
+    }
+
+    .wiz-step-dot {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(240,236,228,0.12);
+      background: var(--navy-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--slate);
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .wiz-step-dot.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      box-shadow: 0 0 16px rgba(201,165,78,0.25);
+    }
+
+    .wiz-step-dot.done {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy-deep);
+    }
+
+    .wiz-step-label {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--slate-light);
+      white-space: nowrap;
+      transition: color 0.3s;
+    }
+
+    .wiz-step-dot.active .wiz-step-label,
+    .wiz-step-dot.done .wiz-step-label {
+      color: var(--cream-dark);
+    }
+
+    /* ── Wizard Steps Container ── */
+    .wizard-body {
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+    }
+
+    .wiz-step {
+      display: none;
+      animation: wizFadeIn 0.35s ease-out;
+    }
+
+    .wiz-step.active {
+      display: block;
+    }
+
+    @keyframes wizFadeIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ── Step 1: Service Cards ── */
+    .service-select-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-select-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 1.75rem 1.25rem;
+      background: rgba(31,45,66,0.35);
+      border: 1.5px solid rgba(240,236,228,0.08);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+
+    .service-select-card:hover {
+      border-color: rgba(201,165,78,0.3);
+      background: rgba(31,45,66,0.55);
+      transform: translateY(-2px);
+    }
+
+    .service-select-card.selected {
+      border-color: var(--gold);
+      background: rgba(201,165,78,0.08);
+      box-shadow: 0 0 20px rgba(201,165,78,0.12);
+    }
+
+    .service-select-card.selected .ssc-icon {
+      color: var(--gold);
+      background: rgba(201,165,78,0.15);
+      border-color: rgba(201,165,78,0.3);
+    }
+
+    .ssc-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(240,236,228,0.04);
+      border: 1px solid rgba(240,236,228,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate-light);
+      transition: all 0.25s;
+    }
+
+    .ssc-icon svg { width: 26px; height: 26px; }
+
+    .ssc-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+    }
+
+    .ssc-tag {
+      font-size: 0.875rem;
+      color: var(--cream-dark);
+      line-height: 1.4;
+    }
+
+    .service-select-card.selected .ssc-title { color: var(--gold); }
+
+    /* ── Step Header ── */
+    .step-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      margin-bottom: 0.375rem;
+    }
+
+    .step-subtitle {
+      font-size: 1rem;
+      color: var(--cream-dark);
+    }
+
+    /* ── Wizard Navigation ── */
+    .wizard-nav {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-wiz {
+      flex: 1;
+      padding: 1.0625rem 1.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-wiz-back {
+      background: transparent;
+      border: 1px solid rgba(240,236,228,0.15);
+      color: var(--slate-light);
+    }
+
+    .btn-wiz-back:hover {
+      border-color: rgba(240,236,228,0.3);
+      color: var(--cream);
+    }
+
+    .btn-wiz-next {
+      background: linear-gradient(135deg, var(--gold) 0%, #d4a843 50%, var(--gold-light) 100%);
+      color: var(--navy-deep);
+      box-shadow: 0 2px 16px var(--glow-gold);
+    }
+
+    .btn-wiz-next:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px var(--glow-gold);
+    }
+
+    .btn-wiz-next:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      filter: none;
+    }
+
+    /* ── Form Inputs (shared) ── */
     .form-group {
       margin-bottom: 1.25rem;
     }
 
     .form-label {
       display: block;
-      font-size: 0.8125rem;
+      font-size: 0.9375rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--slate-light);
+      color: var(--cream-dark);
       margin-bottom: 0.5rem;
     }
 
@@ -1030,9 +1276,9 @@
       background: rgba(31, 45, 66, 0.5);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-sm);
-      padding: 0.875rem 1rem;
+      padding: 1rem 1.125rem;
       font-family: 'Barlow', sans-serif;
-      font-size: 0.9375rem;
+      font-size: 1rem;
       color: var(--cream);
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -1059,51 +1305,15 @@
       box-shadow: 0 0 0 3px rgba(232, 93, 93, 0.1);
     }
 
-    .form-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      padding-right: 2.5rem;
-      cursor: pointer;
-    }
-
-    .form-select option {
-      background: var(--navy-deep);
-    }
-
     .form-textarea {
       resize: vertical;
-      min-height: 110px;
+      min-height: 100px;
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--gold) 0%, #d4a843 50%, var(--gold-light) 100%);
-      color: var(--navy-deep);
-      padding: 1rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.0625rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: none;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
-      margin-top: 0.5rem;
-      box-shadow: 0 2px 16px var(--glow-gold);
-    }
-
-    .btn-submit:hover {
-      filter: brightness(1.1);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 28px var(--glow-gold);
     }
 
     .form-phone {
@@ -1134,16 +1344,12 @@
       animation: errorSlide 0.3s ease-out;
     }
 
-    .form-error.visible {
-      display: flex;
-    }
+    .form-error.visible { display: flex; }
 
     .form-error::before {
       content: '';
       display: inline-block;
-      width: 16px;
-      height: 16px;
-      min-width: 16px;
+      width: 16px; height: 16px; min-width: 16px;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f0a0a0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
       background-size: contain;
       background-repeat: no-repeat;
@@ -1154,22 +1360,46 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── Success State ── */
     .success-state {
       display: none;
       text-align: center;
       padding: 3rem 2rem;
     }
 
-    .success-icon {
-      width: 56px;
-      height: 56px;
-      background: rgba(184, 150, 74, 0.15);
-      border: 1px solid var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .success-checkmark {
+      width: 80px;
+      height: 80px;
       margin: 0 auto 1.5rem;
+      position: relative;
+    }
+
+    .success-checkmark .circle {
+      stroke: var(--gold);
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      animation: circleIn 0.6s ease forwards;
+    }
+
+    .success-checkmark .check {
+      stroke: var(--gold);
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 40;
+      stroke-dashoffset: 40;
+      animation: checkIn 0.4s ease 0.5s forwards;
+    }
+
+    @keyframes circleIn {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes checkIn {
+      to { stroke-dashoffset: 0; }
     }
 
     .success-title {
@@ -1363,6 +1593,72 @@
 
       .form-row {
         grid-template-columns: 1fr;
+      }
+
+      /* ── Wizard mobile overrides ── */
+      .wizard-progress {
+        margin-bottom: 2.5rem;
+      }
+
+      .wiz-step-dot {
+        width: 46px;
+        height: 46px;
+        font-size: 1.125rem;
+      }
+
+      .wiz-step-label {
+        font-size: 0.875rem;
+      }
+
+      .service-select-card {
+        padding: 1.75rem 1rem;
+        gap: 14px;
+      }
+
+      .ssc-icon {
+        width: 64px;
+        height: 64px;
+      }
+
+      .ssc-icon svg {
+        width: 30px;
+        height: 30px;
+      }
+
+      .ssc-title {
+        font-size: 1.25rem;
+      }
+
+      .ssc-tag {
+        font-size: 0.9375rem;
+      }
+
+      .step-title {
+        font-size: 1.625rem;
+      }
+
+      .step-subtitle {
+        font-size: 1.0625rem;
+      }
+
+      .btn-wiz {
+        padding: 1.125rem;
+        font-size: 1.1875rem;
+      }
+
+      .form-label {
+        font-size: 1rem;
+      }
+
+      .form-input,
+      .form-textarea {
+        font-size: 1.0625rem;
+        padding: 1.0625rem 1.125rem;
+      }
+
+      .form-phone {
+        font-size: 1rem;
+        margin-top: 1.5rem;
       }
 
       .gold-bar {
@@ -1950,60 +2246,117 @@
 
       <div>
         <div class="form-card" id="form-wrap">
+          <!-- Progress Bar -->
+          <div class="wizard-progress" id="wizard-progress" style="--progress: 0%">
+            <div class="wiz-step-dot active" data-step="1">1<span class="wiz-step-label">Service</span></div>
+            <div class="wiz-step-dot" data-step="2">2<span class="wiz-step-label">Details</span></div>
+            <div class="wiz-step-dot" data-step="3">3<span class="wiz-step-label">Contact</span></div>
+          </div>
+
           <form id="quote-form" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="name">Full name</label>
-                <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith"
-                  autocomplete="name">
-                <span class="form-error" id="name-error">Please enter your name</span>
+            <div class="wizard-body">
+
+              <!-- STEP 1: Pick a Service -->
+              <div class="wiz-step active" data-wiz="1">
+                <div class="step-header">
+                  <div class="step-title">What do you need?</div>
+                  <div class="step-subtitle">Pick the service that best fits your project.</div>
+                </div>
+                <div class="service-select-grid">
+                  <div class="service-select-card" data-value="junk-removal">
+                    <div class="ssc-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+                    </div>
+                    <div class="ssc-title">Junk Removal</div>
+                    <div class="ssc-tag">We haul it all</div>
+                  </div>
+                  <div class="service-select-card" data-value="demolition">
+                    <div class="ssc-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4l-5 5M3 21l5-5m6-6l3-3a2.12 2.12 0 013 3l-3 3m-6 6l-3-3 9-9 3 3-9 9z"/></svg>
+                    </div>
+                    <div class="ssc-title">Light Demolition</div>
+                    <div class="ssc-tag">Tear-out & haul away</div>
+                  </div>
+                  <div class="service-select-card" data-value="trailer">
+                    <div class="ssc-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="14" width="22" height="7" rx="1"/><path d="M1 17h22M7 14v7m10-7v7M5 14V9h14v5"/></svg>
+                    </div>
+                    <div class="ssc-title">Trailer Rental</div>
+                    <div class="ssc-tag">DIY on your schedule</div>
+                  </div>
+                  <div class="service-select-card" data-value="unsure">
+                    <div class="ssc-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div class="ssc-title">Not Sure Yet</div>
+                    <div class="ssc-tag">We'll help you decide</div>
+                  </div>
+                </div>
+                <input type="hidden" id="service" name="service" value="">
+                <span class="form-error" id="service-error">Pick a service to continue</span>
+                <div class="wizard-nav">
+                  <button type="button" class="btn-wiz btn-wiz-next" id="wiz-next-1" disabled>Continue</button>
+                </div>
               </div>
-              <div class="form-group">
-                <label class="form-label" for="phone">Phone number</label>
-                <input class="form-input" type="tel" id="phone" name="phone" placeholder="(425) 362-9948"
-                  autocomplete="tel">
-                <span class="form-error" id="phone-error">Please enter a valid phone number</span>
+
+              <!-- STEP 2: Job Details -->
+              <div class="wiz-step" data-wiz="2">
+                <div class="step-header">
+                  <div class="step-title">Tell us about the job</div>
+                  <div class="step-subtitle">Where are you and what are we hauling?</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="zip">ZIP code</label>
+                  <input class="form-input" type="text" id="zip" name="zip" placeholder="98004" maxlength="5" inputmode="numeric">
+                  <span class="form-error" id="zip-error">Enter a valid 5-digit ZIP code</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="description">Describe the job</label>
+                  <textarea class="form-textarea" id="description" name="description"
+                    placeholder="e.g. Old couch and a washer on the curb in Kirkland — easy driveway access"></textarea>
+                </div>
+                <div class="wizard-nav">
+                  <button type="button" class="btn-wiz btn-wiz-back" id="wiz-back-2">Back</button>
+                  <button type="button" class="btn-wiz btn-wiz-next" id="wiz-next-2">Continue</button>
+                </div>
               </div>
+
+              <!-- STEP 3: Contact Info -->
+              <div class="wiz-step" data-wiz="3">
+                <div class="step-header">
+                  <div class="step-title">How do we reach you?</div>
+                  <div class="step-subtitle">We'll text or call within the hour.</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="name">Full name</label>
+                  <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name">
+                  <span class="form-error" id="name-error">Enter your name so we know who to call</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone number</label>
+                  <input class="form-input" type="tel" id="phone" name="phone" placeholder="(425) 362-9948" autocomplete="tel">
+                  <span class="form-error" id="phone-error">Enter a valid phone number</span>
+                </div>
+                <div class="wizard-nav">
+                  <button type="button" class="btn-wiz btn-wiz-back" id="wiz-back-3">Back</button>
+                  <button type="submit" class="btn-wiz btn-wiz-next">Get My Free Quote</button>
+                </div>
+              </div>
+
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="service">Service needed</label>
-                <select class="form-select" id="service" name="service">
-                  <option value="">Select a service</option>
-                  <option value="junk-removal">Junk removal</option>
-                  <option value="demolition">Light demolition</option>
-                  <option value="trailer">Trailer rental</option>
-                  <option value="unsure">Not sure yet</option>
-                </select>
-                <span class="form-error" id="service-error">Please select a service</span>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="zip">ZIP code</label>
-                <input class="form-input" type="text" id="zip" name="zip" placeholder="98004" maxlength="5"
-                  inputmode="numeric">
-                <span class="form-error" id="zip-error">Please enter a valid ZIP code</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="description">Tell us about the job</label>
-              <textarea class="form-textarea" id="description" name="description"
-                placeholder="e.g. Old sectional sofa, a washer, and yard debris in my backyard in Kirkland — easy driveway access"></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Get my free quote</button>
           </form>
           <div class="form-phone">Or call us directly: <a href="tel:4253629948">(425) 362-9948</a></div>
         </div>
 
         <div class="success-state" id="success-wrap">
-          <div class="success-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8964a" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12" />
+          <div class="success-checkmark">
+            <svg viewBox="0 0 70 70" width="80" height="80">
+              <circle class="circle" cx="35" cy="35" r="32"/>
+              <polyline class="check" points="22 35 32 45 50 27"/>
             </svg>
           </div>
           <div class="success-title">We got it.</div>
-          <p class="success-sub">Expect a call or text within the hour.<br>We'll confirm your slot and give you an
-            upfront quote before we show up.</p>
+          <p class="success-sub">Expect a call or text within the hour.<br>We'll confirm your slot and give you an upfront quote.</p>
         </div>
       </div>
     </div>
@@ -2135,48 +2488,83 @@
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     window.addEventListener('scroll', () => { btt.classList.toggle('show', window.scrollY > 500); }, { passive: true });
 
-    /* ── Form ── */
+    /* ── Form Wizard ── */
     const form = document.getElementById('quote-form');
     const formWrap = document.getElementById('form-wrap');
     const successWrap = document.getElementById('success-wrap');
+    const progressBar = document.getElementById('wizard-progress');
+    const stepDots = progressBar.querySelectorAll('.wiz-step-dot');
+    let currentStep = 1;
 
     function showError(id, show) {
       const el = document.getElementById(id + '-error');
-      const group = el ? el.closest('.form-group') : null;
-      if (el) {
-        el.classList.toggle('visible', show);
-      }
-      if (group) {
-        group.classList.toggle('has-error', show);
-      }
+      const group = el ? el.closest('.form-group') || el.parentElement : null;
+      if (el) el.classList.toggle('visible', show);
+      if (group) group.classList.toggle('has-error', show);
     }
 
-    function validate() {
+    function goToStep(n) {
+      currentStep = n;
+      document.querySelectorAll('.wiz-step').forEach(s => {
+        s.classList.toggle('active', parseInt(s.dataset.wiz) === n);
+      });
+      stepDots.forEach(d => {
+        const s = parseInt(d.dataset.step);
+        d.classList.toggle('active', s === n);
+        d.classList.toggle('done', s < n);
+      });
+      const pct = ((n - 1) / 2) * 100;
+      progressBar.style.setProperty('--progress', pct + '%');
+    }
+
+    // ── Step 1: Service card selection ──
+    const serviceCards = document.querySelectorAll('.service-select-card');
+    const serviceInput = document.getElementById('service');
+    const nextBtn1 = document.getElementById('wiz-next-1');
+
+    serviceCards.forEach(card => {
+      card.addEventListener('click', () => {
+        serviceCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        serviceInput.value = card.dataset.value;
+        nextBtn1.disabled = false;
+        showError('service', false);
+      });
+    });
+
+    nextBtn1.addEventListener('click', () => {
+      if (!serviceInput.value) { showError('service', true); return; }
+      goToStep(2);
+    });
+
+    // ── Step 2: Details ──
+    document.getElementById('wiz-back-2').addEventListener('click', () => goToStep(1));
+    document.getElementById('wiz-next-2').addEventListener('click', () => {
+      const zip = document.getElementById('zip').value.trim();
+      if (!/^\d{5}$/.test(zip)) { showError('zip', true); return; }
+      showError('zip', false);
+      goToStep(3);
+    });
+
+    // ── Step 3: Contact ──
+    document.getElementById('wiz-back-3').addEventListener('click', () => goToStep(2));
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
       let valid = true;
       const name = document.getElementById('name').value.trim();
       if (name.length < 2) { showError('name', true); valid = false; } else showError('name', false);
       const phone = document.getElementById('phone').value.trim();
       if (!/^[\d\s\-\(\)\+]{7,15}$/.test(phone)) { showError('phone', true); valid = false; } else showError('phone', false);
-      const service = document.getElementById('service').value;
-      if (!service) { showError('service', true); valid = false; } else showError('service', false);
-      const zip = document.getElementById('zip').value.trim();
-      if (!/^\d{5}$/.test(zip)) { showError('zip', true); valid = false; } else showError('zip', false);
-      return valid;
-    }
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      if (!validate()) return;
+      if (!valid) return;
 
       const data = {
-        name: document.getElementById('name').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        service: document.getElementById('service').value,
+        name, phone,
+        service: serviceInput.value,
         zip: document.getElementById('zip').value.trim(),
         description: document.getElementById('description').value.trim(),
       };
 
-      // ── Send form data via mailto ──
       try {
         const subject = encodeURIComponent(`Junk It Quote — ${data.service} — ${data.zip}`);
         const body = encodeURIComponent(
@@ -2191,9 +2579,10 @@
       successWrap.style.display = 'block';
     });
 
-    ['name', 'phone', 'service', 'zip'].forEach(function (field) {
+    // Auto-clear errors on input
+    ['name', 'phone', 'zip'].forEach(field => {
       const el = document.getElementById(field);
-      if (el) el.addEventListener('input', function () { showError(field, false); });
+      if (el) el.addEventListener('input', () => showError(field, false));
     });
   </script>
 </body>
