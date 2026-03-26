@@ -496,6 +496,8 @@
       border-image: linear-gradient(90deg, var(--gold-dark), rgba(201,165,78,0.3), transparent) 1;
       flex-wrap: wrap;
       gap: 0.75rem;
+      position: relative;
+      z-index: 1;
     }
 
     h2 {
@@ -635,9 +637,9 @@
     }
 
     .service-desc {
-      font-size: 0.9375rem;
-      line-height: 1.75;
-      color: var(--slate-light);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--cream-dark);
       flex: 1;
     }
 
@@ -670,16 +672,16 @@
     #process {
       background: var(--navy-deep);
       position: relative;
+      overflow: hidden;
     }
 
     #process::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 100%;
-      background: radial-gradient(ellipse at 80% 30%, rgba(201,165,78,0.04) 0%, transparent 60%);
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(17,26,39,0.92) 0%, rgba(17,26,39,0.8) 50%, rgba(17,26,39,0.92) 100%),
+        url('process-bg.png') center/cover no-repeat;
       pointer-events: none;
     }
 
@@ -687,6 +689,8 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
+      position: relative;
+      z-index: 1;
     }
 
     .step {
@@ -1048,6 +1052,13 @@
       box-shadow: 0 0 0 3px rgba(184, 150, 74, 0.15);
     }
 
+    .form-group.has-error .form-input,
+    .form-group.has-error .form-select,
+    .form-group.has-error .form-textarea {
+      border-color: #e85d5d;
+      box-shadow: 0 0 0 3px rgba(232, 93, 93, 0.1);
+    }
+
     .form-select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
@@ -1109,10 +1120,38 @@
     }
 
     .form-error {
-      font-size: 0.75rem;
-      color: #fc8181;
-      margin-top: 0.375rem;
       display: none;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #f0a0a0;
+      margin-top: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: rgba(232, 93, 93, 0.08);
+      border: 1px solid rgba(232, 93, 93, 0.15);
+      border-radius: 6px;
+      animation: errorSlide 0.3s ease-out;
+    }
+
+    .form-error.visible {
+      display: flex;
+    }
+
+    .form-error::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f0a0a0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    @keyframes errorSlide {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .success-state {
@@ -1631,7 +1670,7 @@
       <p class="hero-sub">Junk removal, light demolition, and trailer rentals on your schedule. Servicing the Eastside and Snohomish County.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Get a free quote</a>
-        <a href="tel:4250000000" class="btn-outline">Call (425) 000-0000</a>
+        <a href="tel:4253629948" class="btn-outline">Call (425) 362-9948</a>
       </div>
       <div class="trust-row">
         <div class="trust-item">
@@ -1696,9 +1735,7 @@
         </svg>
         <div class="service-label">Junk removal</div>
         <div class="service-head">We haul it all — you don't lift a finger.</div>
-        <p class="service-desc">Old furniture, appliances, yard waste, construction debris — if it needs to go, we take
-          it. Same-day and next-day pickup across the Eastside and Snohomish area. Just point us to the pile and we'll
-          handle the rest.</p>
+        <p class="service-desc">Furniture, appliances, yard waste, debris — we take it all. Same-day pickup across the Eastside.</p>
         <a href="#contact" class="service-link">Get a quote</a>
       </div>
 
@@ -1709,8 +1746,7 @@
         </svg>
         <div class="service-label">Light demolition</div>
         <div class="service-head">Tear-out without the headache.</div>
-        <p class="service-desc">Deck removal, shed demolition, fence tear-down, garage cleanouts. We do the dirty work
-          and take everything with us when we're done. No dumpster sitting in your driveway for a week.</p>
+        <p class="service-desc">Decks, sheds, fences, garages. We tear it down and haul it away — no dumpster needed.</p>
         <a href="#contact" class="service-link">Get a quote</a>
       </div>
 
@@ -1722,8 +1758,7 @@
         </svg>
         <div class="service-label">Trailer rental</div>
         <div class="service-head">Haul it yourself on your schedule.</div>
-        <p class="service-desc">Rent by the day and move at your own pace. Clean, road-ready trailers perfect for
-          moving, landscaping runs, or equipment hauling. Call to check same-day availability.</p>
+        <p class="service-desc">Rent by the day. Clean, road-ready trailers for moving, landscaping, or hauling.</p>
         <a href="#contact" class="service-link">Check availability</a>
       </div>
 
@@ -1925,7 +1960,7 @@
               </div>
               <div class="form-group">
                 <label class="form-label" for="phone">Phone number</label>
-                <input class="form-input" type="tel" id="phone" name="phone" placeholder="(425) 000-0000"
+                <input class="form-input" type="tel" id="phone" name="phone" placeholder="(425) 362-9948"
                   autocomplete="tel">
                 <span class="form-error" id="phone-error">Please enter a valid phone number</span>
               </div>
@@ -1956,7 +1991,7 @@
             </div>
             <button type="submit" class="btn-submit">Get my free quote</button>
           </form>
-          <div class="form-phone">Or call us directly: <a href="tel:4250000000">(425) 000-0000</a></div>
+          <div class="form-phone">Or call us directly: <a href="tel:4253629948">(425) 362-9948</a></div>
         </div>
 
         <div class="success-state" id="success-wrap">
@@ -2107,7 +2142,13 @@
 
     function showError(id, show) {
       const el = document.getElementById(id + '-error');
-      if (el) el.style.display = show ? 'block' : 'none';
+      const group = el ? el.closest('.form-group') : null;
+      if (el) {
+        el.classList.toggle('visible', show);
+      }
+      if (group) {
+        group.classList.toggle('has-error', show);
+      }
     }
 
     function validate() {
@@ -2135,16 +2176,15 @@
         description: document.getElementById('description').value.trim(),
       };
 
-      // ── Send via Formspree (replace YOUR_FORM_ID with your actual Formspree endpoint) ──
+      // ── Send form data via mailto ──
       try {
-        const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data),
-        });
-        if (!res.ok) throw new Error('Network error');
+        const subject = encodeURIComponent(`Junk It Quote — ${data.service} — ${data.zip}`);
+        const body = encodeURIComponent(
+          `Name: ${data.name}\nPhone: ${data.phone}\nService: ${data.service}\nZIP: ${data.zip}\n\nJob Details:\n${data.description || 'N/A'}`
+        );
+        window.open(`mailto:wong.jaden@icloud.com?subject=${subject}&body=${body}`, '_self');
       } catch (err) {
-        console.warn('Form submission error — showing success anyway for UX:', err);
+        console.warn('Form submission error:', err);
       }
 
       formWrap.style.display = 'none';
