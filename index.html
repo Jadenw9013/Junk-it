@@ -25,8 +25,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Junk It — Same-Day Junk Removal">
-  <meta name="twitter:description"
-    content="Fast, affordable junk removal and light demolition. Same-day available.">
+  <meta name="twitter:description" content="Fast, affordable junk removal and light demolition. Same-day available.">
   <meta name="twitter:image" content="https://junkitwa.com/hero-truck.png">
 
   <!-- Favicon (inline SVG fallback) -->
@@ -230,7 +229,7 @@
       font-size: clamp(12rem, 22vw, 28rem);
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: rgba(0, 0, 0, 0.05);
+      color: rgba(0, 0, 0, 0.12);
       white-space: nowrap;
       pointer-events: none;
       user-select: none;
@@ -239,7 +238,7 @@
     }
 
     .hero-watermark .wm-tri {
-      color: rgba(245, 197, 24, 0.14);
+      color: rgba(245, 197, 24, 0.28);
     }
 
     .hero-content {
@@ -258,6 +257,7 @@
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -273,6 +273,7 @@
         opacity: 0;
         transform: translate(-50%, -45%);
       }
+
       to {
         opacity: 1;
         transform: translate(-50%, -50%);
@@ -477,8 +478,8 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: rgba(245,197,24,0.1);
-      border: 1px solid rgba(245,197,24,0.25);
+      background: rgba(245, 197, 24, 0.1);
+      border: 1px solid rgba(245, 197, 24, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -616,7 +617,7 @@
       color: var(--yellow);
       line-height: 1;
       transition: all 0.3s;
-      border: 1px solid rgba(245,197,24,0.2);
+      border: 1px solid rgba(245, 197, 24, 0.2);
       width: 56px;
       height: 56px;
       display: flex;
@@ -626,8 +627,8 @@
     }
 
     .service-card:hover .service-num {
-      border-color: rgba(245,197,24,0.4);
-      box-shadow: 0 0 12px rgba(245,197,24,0.15);
+      border-color: rgba(245, 197, 24, 0.4);
+      box-shadow: 0 0 12px rgba(245, 197, 24, 0.15);
     }
 
     .service-icon {
@@ -641,7 +642,7 @@
 
     .service-card:hover .service-icon {
       transform: translateY(-2px) scale(1.08);
-      filter: drop-shadow(0 4px 12px rgba(245,197,24,0.3));
+      filter: drop-shadow(0 4px 12px rgba(245, 197, 24, 0.3));
     }
 
     .service-label {
@@ -706,7 +707,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(234,234,229,0.92) 0%, rgba(234,234,229,0.8) 50%, rgba(234,234,229,0.92) 100%),
+        linear-gradient(180deg, rgba(234, 234, 229, 0.92) 0%, rgba(234, 234, 229, 0.8) 50%, rgba(234, 234, 229, 0.92) 100%),
         url('process-bg.png') center/cover no-repeat;
       pointer-events: none;
     }
@@ -757,7 +758,7 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 4.5rem;
       font-weight: 800;
-      color: rgba(245,197,24,0.7);
+      color: rgba(245, 197, 24, 0.7);
       line-height: 1;
       margin-bottom: 1rem;
       transition: all 0.3s;
@@ -805,7 +806,7 @@
       left: 10%;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(245,197,24,0.04) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(245, 197, 24, 0.04) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -1010,7 +1011,7 @@
       background: var(--yellow);
       margin-top: 6px;
       flex-shrink: 0;
-      box-shadow: 0 0 8px rgba(245,197,24,0.3);
+      box-shadow: 0 0 8px rgba(245, 197, 24, 0.3);
     }
 
     .promise-text {
@@ -1083,7 +1084,7 @@
     .wiz-step-dot.active {
       border-color: var(--yellow);
       color: var(--yellow-dark);
-      box-shadow: 0 0 16px rgba(245,197,24,0.25);
+      box-shadow: 0 0 16px rgba(245, 197, 24, 0.25);
     }
 
     .wiz-step-dot.done {
@@ -1128,8 +1129,15 @@
     }
 
     @keyframes wizFadeIn {
-      from { opacity: 0; transform: translateX(20px); }
-      to   { opacity: 1; transform: translateX(0); }
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     /* ── Step 1: Service Cards ── */
@@ -1155,28 +1163,28 @@
     }
 
     .service-select-card:hover {
-      border-color: rgba(245,197,24,0.3);
+      border-color: rgba(245, 197, 24, 0.3);
       background: var(--surface);
       transform: translateY(-2px);
     }
 
     .service-select-card.selected {
       border-color: var(--yellow);
-      background: rgba(245,197,24,0.06);
-      box-shadow: 0 0 20px rgba(245,197,24,0.12);
+      background: rgba(245, 197, 24, 0.06);
+      box-shadow: 0 0 20px rgba(245, 197, 24, 0.12);
     }
 
     .service-select-card.selected .ssc-icon {
       color: var(--yellow-dark);
-      background: rgba(245,197,24,0.15);
-      border-color: rgba(245,197,24,0.3);
+      background: rgba(245, 197, 24, 0.15);
+      border-color: rgba(245, 197, 24, 0.3);
     }
 
     .ssc-icon {
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: rgba(0,0,0,0.03);
+      background: rgba(0, 0, 0, 0.03);
       border: 1px solid var(--border);
       display: flex;
       align-items: center;
@@ -1185,7 +1193,10 @@
       transition: all 0.25s;
     }
 
-    .ssc-icon svg { width: 26px; height: 26px; }
+    .ssc-icon svg {
+      width: 26px;
+      height: 26px;
+    }
 
     .ssc-title {
       font-family: 'Barlow Condensed', sans-serif;
@@ -1202,7 +1213,9 @@
       line-height: 1.4;
     }
 
-    .service-select-card.selected .ssc-title { color: var(--yellow-dark); }
+    .service-select-card.selected .ssc-title {
+      color: var(--yellow-dark);
+    }
 
     /* ── Step Header ── */
     .step-header {
@@ -1365,20 +1378,31 @@
       animation: errorSlide 0.3s ease-out;
     }
 
-    .form-error.visible { display: flex; }
+    .form-error.visible {
+      display: flex;
+    }
 
     .form-error::before {
       content: '';
       display: inline-block;
-      width: 16px; height: 16px; min-width: 16px;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d63031' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
       background-size: contain;
       background-repeat: no-repeat;
     }
 
     @keyframes errorSlide {
-      from { opacity: 0; transform: translateY(-6px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* ── Success State ── */
@@ -1416,11 +1440,15 @@
     }
 
     @keyframes circleIn {
-      to { stroke-dashoffset: 0; }
+      to {
+        stroke-dashoffset: 0;
+      }
     }
 
     @keyframes checkIn {
-      to { stroke-dashoffset: 0; }
+      to {
+        stroke-dashoffset: 0;
+      }
     }
 
     .success-title {
@@ -1443,7 +1471,7 @@
     footer {
       background: var(--charcoal);
       padding: 2.5rem 5vw;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .footer-inner {
@@ -1482,7 +1510,7 @@
       font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255, 255, 255, 0.6);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -1493,7 +1521,7 @@
 
     .footer-copy {
       font-size: 0.875rem;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
     }
 
     /* ── MOBILE ── */
@@ -1504,7 +1532,8 @@
       }
 
       .hero-watermark {
-        font-size: clamp(6rem, 20vw, 12rem);
+        font-size: clamp(6rem, 22vw, 12rem);
+        top: 30%;
       }
 
       h1 {
@@ -1774,7 +1803,7 @@
 
       .mobile-nav-inner a:hover {
         color: var(--yellow-dark);
-        background: rgba(245,197,24,0.05);
+        background: rgba(245, 197, 24, 0.05);
       }
 
       .mobile-nav-inner .mobile-nav-cta {
@@ -1806,14 +1835,24 @@
     }
 
     /* Stagger children within grids */
-    .service-card, .step, .proof-card, .city-tag, .trust-item, .promise-item {
+    .service-card,
+    .step,
+    .proof-card,
+    .city-tag,
+    .trust-item,
+    .promise-item {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                  background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
-    .service-card.stagger-visible, .step.stagger-visible, .proof-card.stagger-visible, .city-tag.stagger-visible, .trust-item.stagger-visible, .promise-item.stagger-visible {
+    .service-card.stagger-visible,
+    .step.stagger-visible,
+    .proof-card.stagger-visible,
+    .city-tag.stagger-visible,
+    .trust-item.stagger-visible,
+    .promise-item.stagger-visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -1867,7 +1906,7 @@
 
     .back-to-top:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 28px rgba(245,197,24,0.4);
+      box-shadow: 0 6px 28px rgba(245, 197, 24, 0.4);
     }
 
     /* ── NAV LINK UNDERLINE ── */
@@ -1914,9 +1953,19 @@
       background: linear-gradient(90deg, transparent, var(--border), transparent);
     }
 
-    #services::before { top: 0; bottom: auto; }
-    #process::after { bottom: 0; }
-    #proof::before { top: 0; bottom: auto; }
+    #services::before {
+      top: 0;
+      bottom: auto;
+    }
+
+    #process::after {
+      bottom: 0;
+    }
+
+    #proof::before {
+      top: 0;
+      bottom: auto;
+    }
 
     /* ═══════════════════════════════════════════════════
        ACCESSIBILITY + INTERACTIVITY ENHANCEMENTS
@@ -1931,7 +1980,10 @@
 
     /* ── Reduced motion respect ── */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -1945,6 +1997,7 @@
         opacity: 0;
         transform: translateY(24px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -1955,7 +2008,7 @@
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .reveal.visible {
@@ -1985,14 +2038,14 @@
     .step,
     .proof-card {
       transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                  border-color 0.3s ease;
+        box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.3s ease;
     }
 
     /* ── Trust icon bounce on hover ── */
     .trust-icon {
       transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  box-shadow 0.3s ease;
+        box-shadow 0.3s ease;
     }
 
     .trust-item:hover .trust-icon {
@@ -2288,7 +2341,7 @@
     <div class="hero-content">
       <h1>Same-Day<br><span class="gold-line">Junk</span> Removal</h1>
       <div class="hero-eyebrow">Bellevue · Kirkland · Snohomish</div>
-      <p class="hero-sub">We handle the heavy lifting so you don't have to. One call, same-day pickup, clean space — that's it.</p>
+      <p class="hero-sub">We handle the heavy lifting so you don't have to. One call, same-day pickup, clean space.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Get your free quote — takes 2 min</a>
         <a href="tel:4254295076" class="btn-outline">Call (425) 429-5076</a>
@@ -2296,25 +2349,40 @@
       <div class="trust-row">
         <div class="trust-item">
           <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
           </div>
           Same-day<br>available
         </div>
         <div class="trust-item">
           <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23" />
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
           </div>
           Upfront<br>pricing
         </div>
         <div class="trust-item">
           <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
           </div>
           Locally<br>owned
         </div>
         <div class="trust-item">
           <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
           </div>
           Fully<br>insured
         </div>
@@ -2350,7 +2418,8 @@
         </svg>
         <div class="service-label">Junk removal</div>
         <div class="service-head">We haul it all — you don't lift a finger.</div>
-        <p class="service-desc">Furniture, appliances, yard waste, debris — we take it all. Same-day pickup across the Eastside.</p>
+        <p class="service-desc">Furniture, appliances, yard waste, debris — we take it all. Same-day pickup across the
+          Eastside.</p>
         <a href="#contact" class="service-link">Get a quote</a>
       </div>
 
@@ -2361,7 +2430,8 @@
         </svg>
         <div class="service-label">Light demolition</div>
         <div class="service-head">Tear-out without the headache.</div>
-        <p class="service-desc">Decks, sheds, fences, garages. We tear it down and haul it away — no dumpster needed.</p>
+        <p class="service-desc">Decks, sheds, fences, garages. We tear it down and haul it away — no dumpster needed.
+        </p>
         <a href="#contact" class="service-link">Get a quote</a>
       </div>
 
@@ -2572,14 +2642,20 @@
                 <div class="service-select-grid">
                   <div class="service-select-card" data-value="junk-removal">
                     <div class="ssc-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6" />
+                      </svg>
                     </div>
                     <div class="ssc-title">Junk Removal</div>
                     <div class="ssc-tag">We haul it all</div>
                   </div>
                   <div class="service-select-card" data-value="demolition">
                     <div class="ssc-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4l-5 5M3 21l5-5m6-6l3-3a2.12 2.12 0 013 3l-3 3m-6 6l-3-3 9-9 3 3-9 9z"/></svg>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 4l-5 5M3 21l5-5m6-6l3-3a2.12 2.12 0 013 3l-3 3m-6 6l-3-3 9-9 3 3-9 9z" />
+                      </svg>
                     </div>
                     <div class="ssc-title">Light Demolition</div>
                     <div class="ssc-tag">Tear-out & haul away</div>
@@ -2587,7 +2663,12 @@
 
                   <div class="service-select-card" data-value="unsure">
                     <div class="ssc-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                      </svg>
                     </div>
                     <div class="ssc-title">Not Sure Yet</div>
                     <div class="ssc-tag">We'll help you decide</div>
@@ -2608,7 +2689,8 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="zip">ZIP code</label>
-                  <input class="form-input" type="text" id="zip" name="zip" placeholder="98004" maxlength="5" inputmode="numeric">
+                  <input class="form-input" type="text" id="zip" name="zip" placeholder="98004" maxlength="5"
+                    inputmode="numeric">
                   <span class="form-error" id="zip-error">Enter a valid 5-digit ZIP code</span>
                 </div>
                 <div class="form-group">
@@ -2630,12 +2712,14 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="name">Full name</label>
-                  <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name">
+                  <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith"
+                    autocomplete="name">
                   <span class="form-error" id="name-error">Enter your name so we know who to call</span>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="phone">Phone number</label>
-                  <input class="form-input" type="tel" id="phone" name="phone" placeholder="(425) 429-5076" autocomplete="tel">
+                  <input class="form-input" type="tel" id="phone" name="phone" placeholder="(425) 429-5076"
+                    autocomplete="tel">
                   <span class="form-error" id="phone-error">Enter a valid phone number</span>
                 </div>
                 <div class="wizard-nav">
@@ -2652,12 +2736,13 @@
         <div class="success-state" id="success-wrap">
           <div class="success-checkmark">
             <svg viewBox="0 0 70 70" width="80" height="80">
-              <circle class="circle" cx="35" cy="35" r="32"/>
-              <polyline class="check" points="22 35 32 45 50 27"/>
+              <circle class="circle" cx="35" cy="35" r="32" />
+              <polyline class="check" points="22 35 32 45 50 27" />
             </svg>
           </div>
           <div class="success-title">We got it.</div>
-          <p class="success-sub">Expect a call or text within the hour.<br>We'll confirm your slot and give you an upfront quote.</p>
+          <p class="success-sub">Expect a call or text within the hour.<br>We'll confirm your slot and give you an
+            upfront quote.</p>
         </div>
       </div>
     </div>
