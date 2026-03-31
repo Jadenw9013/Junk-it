@@ -67,13 +67,13 @@
 </script>
   <style>
     :root {
-      --bg: #f5f5f0;
+      --bg: #f7f6f1;
       --bg-alt: #eaeae5;
       --surface: #ffffff;
       --charcoal: #2d2d2d;
-      --charcoal-light: #444444;
-      --text-muted: #555555;
-      --text-light: #777777;
+      --charcoal-light: #3a3a3a;
+      --text-muted: #4a4a4a;
+      --text-light: #6b6b6b;
       --yellow: #f5c518;
       --yellow-dark: #d4a800;
       --yellow-light: #ffd84d;
@@ -92,9 +92,9 @@
       --gold-dark: #d4a800;
       --navy-deep: #2d2d2d;
       --cream: #2d2d2d;
-      --cream-dark: #444444;
-      --slate: #777777;
-      --slate-light: #555555;
+      --cream-dark: #3a3a3a;
+      --slate: #6b6b6b;
+      --slate-light: #4a4a4a;
       --glass-border: rgba(0, 0, 0, 0.08);
       --glow-gold: rgba(245, 197, 24, 0.3);
     }
@@ -211,42 +211,19 @@
     /* ── HERO ── */
     .hero {
       min-height: 90vh;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      justify-content: center;
+      gap: 4rem;
       position: relative;
       overflow: hidden;
       padding: 6rem 5vw 4rem;
     }
 
-    .hero-watermark {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: clamp(12rem, 22vw, 28rem);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: rgba(0, 0, 0, 0.12);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-      z-index: 0;
-      line-height: 1;
-    }
-
-    .hero-watermark .wm-tri {
-      color: rgba(245, 197, 24, 0.28);
-    }
-
     .hero-content {
-      max-width: 720px;
-      text-align: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       position: relative;
       z-index: 2;
       animation: heroEnter 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
@@ -257,155 +234,132 @@
         opacity: 0;
         transform: translateY(30px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    .hero-watermark {
-      animation: watermarkEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0s both;
-    }
-
-    @keyframes watermarkEnter {
+    @keyframes heroImageEnter {
       from {
         opacity: 0;
-        transform: translate(-50%, -45%);
+        transform: translateY(20px) scale(0.97);
       }
-
       to {
         opacity: 1;
-        transform: translate(-50%, -50%);
+        transform: translateY(0) scale(1);
       }
     }
 
     h1 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-size: clamp(3rem, 5.5vw, 4.5rem);
       font-weight: 800;
-      line-height: 0.92;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
       color: var(--charcoal);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     h1 .gold-line {
       color: var(--yellow);
-      -webkit-text-fill-color: initial;
     }
 
     .hero-eyebrow {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      font-size: 0.875rem;
+      gap: 8px;
+      font-size: 0.8125rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--charcoal-light);
-      margin-bottom: 1.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
     }
 
-    .hero-eyebrow::before,
-    .hero-eyebrow::after {
+    .hero-eyebrow::before {
       content: '';
       display: block;
-      width: 28px;
+      width: 24px;
       height: 2px;
       background: var(--yellow);
     }
 
     .hero-sub {
-      font-size: 1.125rem;
-      line-height: 1.75;
+      font-size: 1.1875rem;
+      line-height: 1.7;
       color: var(--charcoal-light);
-      max-width: 540px;
-      margin-bottom: 2rem;
-      text-align: center;
+      max-width: 480px;
+      margin-bottom: 1.75rem;
     }
 
-    /* ── Hero Social Proof ── */
-    .hero-proof {
+    /* ── Hero Trust Block ── */
+    .hero-trust-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-trust-item {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-      padding: 0.875rem 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      box-shadow: 0 2px 8px var(--shadow);
+      gap: 0.5rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--charcoal);
     }
 
-    .proof-stars {
+    .hero-trust-item .trust-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(245, 197, 24, 0.15);
       display: flex;
-      gap: 2px;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
 
-    .proof-stars svg {
-      width: 18px;
-      height: 18px;
+    .hero-trust-item .trust-check svg {
+      width: 12px;
+      height: 12px;
+      color: var(--yellow-dark);
+    }
+
+    .hero-trust-item.trust-rating {
+      gap: 0.375rem;
+    }
+
+    .hero-trust-item .trust-stars {
+      display: flex;
+      gap: 1px;
+    }
+
+    .hero-trust-item .trust-stars svg {
+      width: 14px;
+      height: 14px;
       fill: var(--yellow);
     }
 
-    .proof-text {
-      font-size: 0.9375rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .proof-text strong {
-      color: var(--charcoal);
-      font-weight: 700;
-    }
-
-    .hero-testimonial {
-      max-width: 480px;
-      margin-bottom: 2.25rem;
-      padding-left: 1rem;
-      border-left: 2px solid var(--yellow);
-      text-align: left;
-    }
-
-    .hero-testimonial q {
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--text-muted);
-      line-height: 1.6;
-      quotes: '\201C' '\201D';
-    }
-
-    .hero-testimonial cite {
-      display: block;
-      margin-top: 0.5rem;
-      font-size: 0.8125rem;
-      font-style: normal;
-      font-weight: 600;
-      color: var(--text-light);
-      letter-spacing: 0.02em;
-    }
-
+    /* ── Hero CTA Group ── */
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
-      margin-bottom: 3rem;
-      justify-content: center;
+      margin-bottom: 0.75rem;
     }
 
     .btn-primary {
       display: inline-block;
       background: var(--yellow);
       color: var(--charcoal);
-      padding: 0.9375rem 2.25rem;
+      padding: 1rem 2.25rem;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
+      font-size: 1.0625rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       text-decoration: none;
       border: none;
@@ -421,6 +375,96 @@
       box-shadow: 0 6px 28px var(--glow-yellow);
     }
 
+    .hero-call-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .hero-call-link svg {
+      width: 18px;
+      height: 18px;
+      color: var(--yellow-dark);
+    }
+
+    .hero-call-link:hover {
+      color: var(--yellow-dark);
+    }
+
+    .hero-reassurance {
+      font-size: 0.8125rem;
+      color: var(--text-light);
+      letter-spacing: 0.02em;
+      margin-bottom: 0;
+    }
+
+    /* ── Hero Image Column ── */
+    .hero-image-col {
+      position: relative;
+      animation: heroImageEnter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+    }
+
+    .hero-image-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 12px 48px var(--shadow-lg), 0 2px 8px var(--shadow);
+      aspect-ratio: 4 / 3.5;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-float-card {
+      position: absolute;
+      bottom: -1.25rem;
+      left: -1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      box-shadow: 0 8px 32px var(--shadow-lg);
+      max-width: 280px;
+      animation: heroImageEnter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+    }
+
+    .float-card-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .float-card-stars svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--yellow);
+    }
+
+    .float-card-quote {
+      font-size: 0.875rem;
+      font-style: italic;
+      color: var(--charcoal-light);
+      line-height: 1.5;
+      margin-bottom: 0.375rem;
+    }
+
+    .float-card-author {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-light);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Legacy btn-outline (used elsewhere) ── */
     .btn-outline {
       display: inline-flex;
       align-items: center;
@@ -433,9 +477,9 @@
       text-transform: uppercase;
       color: var(--charcoal);
       text-decoration: none;
-      border: 1px solid var(--border-hover);
+      border: 2px solid var(--charcoal);
       border-radius: var(--radius-sm);
-      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s, background 0.2s;
     }
 
     .btn-outline::after {
@@ -445,8 +489,9 @@
     }
 
     .btn-outline:hover {
-      border-color: var(--yellow);
-      color: var(--yellow-dark);
+      background: var(--charcoal);
+      color: var(--white);
+      border-color: var(--charcoal);
       transform: translateY(-1px);
     }
 
@@ -454,43 +499,7 @@
       transform: translateX(4px);
     }
 
-    .trust-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
 
-    .trust-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-align: center;
-      letter-spacing: 0.02em;
-    }
-
-    .trust-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: rgba(245, 197, 24, 0.1);
-      border: 1px solid rgba(245, 197, 24, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--yellow-dark);
-      margin-bottom: 2px;
-    }
-
-    .trust-icon svg {
-      width: 24px;
-      height: 24px;
-    }
 
     /* ── ACCENT BAR ── */
     .gold-bar {
@@ -1527,68 +1536,65 @@
     /* ── MOBILE ── */
     @media (max-width: 900px) {
       .hero {
+        grid-template-columns: 1fr;
         min-height: auto;
-        padding: 4rem 5vw 3rem;
+        padding: 3rem 5vw 2.5rem;
+        padding-top: max(3rem, env(safe-area-inset-top));
+        gap: 0;
       }
 
-      .hero-watermark {
-        font-size: clamp(6rem, 22vw, 12rem);
-        top: 30%;
+      .hero-content {
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-image-col {
+        display: none;
       }
 
       h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+        font-size: 2.75rem;
+        line-height: 1.08;
+        margin-bottom: 0.875rem;
       }
 
       .hero-eyebrow {
         font-size: 0.75rem;
+        justify-content: center;
       }
 
-      .hero-proof {
-        flex-direction: column;
+      .hero-sub {
         text-align: center;
-        gap: 0.5rem;
+        max-width: 100%;
+        font-size: 1.0625rem;
+      }
+
+      .hero-trust-grid {
+        justify-items: center;
+        gap: 0.5rem 1rem;
       }
 
       .hero-actions {
         flex-direction: column;
         align-items: stretch;
         width: 100%;
+        gap: 0.75rem;
       }
 
       .btn-primary {
         text-align: center;
         padding: 1rem;
-        font-size: 1rem;
+        font-size: 1.0625rem;
       }
 
-      .btn-outline {
+      .hero-call-link {
         justify-content: center;
-        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        padding: 0.75rem 0;
       }
 
-      .trust-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-        width: 100%;
-      }
-
-      .trust-item {
-        font-size: 0.9375rem;
-        color: var(--text-muted);
-        font-weight: 600;
-      }
-
-      .trust-icon {
-        width: 56px;
-        height: 56px;
-      }
-
-      .trust-icon svg {
-        width: 26px;
-        height: 26px;
+      .hero-reassurance {
+        text-align: center;
       }
 
 
@@ -1611,7 +1617,11 @@
 
       .contact-grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 1.25rem;
+      }
+
+      .contact-promise {
+        display: none;
       }
 
       .form-row {
@@ -2224,6 +2234,7 @@
       /* Contact section */
       .contact-sub {
         font-size: 1.0625rem;
+        margin-bottom: 1rem;
       }
 
       .promise-text {
@@ -2283,8 +2294,19 @@
 
     /* ── Extra-small screens ── */
     @media (max-width: 480px) {
+      h1 {
+        font-size: 2.25rem;
+        line-height: 1.08;
+        margin-bottom: 0.625rem;
+      }
+
       .hero-sub {
-        font-size: 1.125rem;
+        font-size: 1rem;
+      }
+
+      .hero-trust-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
       }
 
       .steps-grid {
@@ -2293,14 +2315,6 @@
 
       .step-num {
         font-size: 3.5rem;
-      }
-
-      .trust-row {
-        gap: 1.25rem;
-      }
-
-      .trust-item {
-        font-size: 0.875rem;
       }
     }
   </style>
@@ -2338,55 +2352,60 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero-watermark">JUNK<span class="wm-tri">▲</span>IT</div>
     <div class="hero-content">
-      <h1>Same-Day<br><span class="gold-line">Junk</span> Removal</h1>
       <div class="hero-eyebrow">Bellevue · Kirkland · Snohomish</div>
-      <p class="hero-sub">We handle the heavy lifting so you don't have to. One call, same-day pickup, clean space.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get your free quote — takes 2 min</a>
-        <a href="tel:4254295076" class="btn-outline">Call (425) 429-5076</a>
+      <h1>Same-Day<br><span class="gold-line">Junk</span> Removal</h1>
+      <p class="hero-sub">Upfront pricing, professional crews, and fast local pickup — without the hassle.</p>
+
+      <div class="hero-trust-grid">
+        <div class="hero-trust-item trust-rating">
+          <div class="trust-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          </div>
+          5.0 Google Rating
+        </div>
+        <div class="hero-trust-item">
+          <div class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Licensed &amp; Insured
+        </div>
+        <div class="hero-trust-item">
+          <div class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          50+ Pickups Completed
+        </div>
+        <div class="hero-trust-item">
+          <div class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Locally Owned
+        </div>
       </div>
-      <div class="trust-row">
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-          </div>
-          Same-day<br>available
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get My Free Quote</a>
+        <a href="tel:4254295076" class="hero-call-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (425) 429-5076
+        </a>
+      </div>
+      <p class="hero-reassurance">Takes 2 minutes · No obligation · Same-day availability</p>
+    </div>
+
+    <div class="hero-image-col">
+      <div class="hero-image-wrap">
+        <img src="hero-crew.png" alt="Junk It crew removing furniture from a home in Bellevue, WA" width="640" height="560" loading="eager">
+      </div>
+      <div class="hero-float-card">
+        <div class="float-card-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <line x1="12" y1="1" x2="12" y2="23" />
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </svg>
-          </div>
-          Upfront<br>pricing
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
-          </div>
-          Locally<br>owned
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-          </div>
-          Fully<br>insured
-        </div>
+        <p class="float-card-quote">"Fast and professional — they cleared out our entire garage in under an hour!"</p>
+        <p class="float-card-author">— Sarah K., Bellevue</p>
       </div>
     </div>
   </section>
